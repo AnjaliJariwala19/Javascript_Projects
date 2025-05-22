@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let r = Math.floor(Math.random() * 10); // Random number between 0 and 9
+        let count = 0; // Counter for incorrect guesses
+        let n = Number.parseInt(prompt("Enter your guessed number:"));
+        let score = []; // Array to track guesses
+
+        while (isNaN(n)) {
+            n = Number.parseInt(prompt("Please enter a valid number:"));
+        }
+
+        if (r === n) {
+            alert("You guessed the number correctly");
+            alert("You Won");
+            alert("Your score is 10");
+        } else {
+            while (r !== n) {
+                count++;
+                score.push(n); // Track the guess
+                if (n < r) {
+                    alert(`The random number is greater than ${n}`);
+                } else if (n > r) {
+                    alert(`The random number is smaller than ${n}`);
+                }
+
+                // Prompt for the next guess
+                n = Number.parseInt(prompt("Enter your guessed number:"));
+
+                // Handle invalid input
+                while (isNaN(n)) {
+                    n = Number.parseInt(prompt("Please enter a valid number:"));
+                }
+            }
+        
+            // User guessed correctly
+            score.push(n); // Add the correct guess
+            alert("You guessed the number correctly!");
+            alert("You won!");
+            alert(`Your score is ${10 - count}`);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

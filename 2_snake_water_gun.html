@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let player_objects = 'SWG'
+        function string_generation(length){
+        let result = ''
+        const player_objects_length = player_objects.length;
+        for (let i = 0 ; i<length ; i++){
+            result += player_objects.charAt(Math.floor(Math.random() * player_objects_length));
+        }
+        return result
+        }   
+
+        function compare(user,computer){
+            if (user == computer){
+                return 0
+            }
+            if((user == 'S' && computer == 'W') ||
+            (user == 'W' && computer == 'G') ||
+            (user == 'G' && computer == 'S')){
+                
+                return 10
+            }
+            return -10
+
+        }
+        
+        function play(round){
+            user = prompt(`Round - ${round} Enter the value S(Snake),W(Water) and G(Gun): `).toUpperCase()
+            while (user !== 'S' && user !== 'W' && user !== 'G'){
+                alert ("Invalid Value. Enter again.")
+                user = prompt(`Round - ${round} Enter the value S(Snake),W(Water) and G(Gun): `).toUpperCase()
+            }
+
+            computer = string_generation(1)
+            alert(`Computer:${computer}  You:${user}`)
+
+            let result = compare(user,computer)
+            if (result == 10){
+                alert("Your Point")
+                return {user :10 ,computer:0}
+            }
+            else if (result == -10){
+                alert ("Computer's Point")
+                return {user :0 ,computer:10}
+            }
+            else {
+                alert("Its a Draw")
+                return {user :0 ,computer:0}
+            }
+        }
+
+        let userScore = 0
+        let computerScore = 0
+        n = Number.parseInt(prompt("Enter the number of round:"))
+
+        for(let round = 1 ; round <= n ; round++){
+            const {user , computer} = play(round)
+            userScore += user
+            computerScore += computer
+        }
+
+        alert(`Final Scores: \n Computer:${computerScore}  You:${userScore} `)
+        if(userScore > computerScore){
+            alert("Congrats !! You won the match")
+        }
+        else if(userScore < computerScore){
+            alert("Sorry !! You lose the match")
+        }
+        else{
+            alert("It's a tie")
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+

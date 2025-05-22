@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            margin: 0;
+            font-size: 20px;
+        }
+        button {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        #jokeId {
+            font-weight: bold;
+            color: black;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        const arr = 
+        [
+            `Why don’t skeletons fight each other? They don’t have the guts`,
+            `What do you call fake spaghetti? An impasta`,
+            `Why did the scarecrow win an award? He was outstanding in his field`,
+            `What’s orange and sounds like a parrot? A carrot`,
+            `What do you call cheese that isn’t yours? Nacho cheese`,
+            `Why don’t scientists trust atoms? Because they make up everything`,
+            `What’s brown and sticky? A stick`,
+            `Why did the bicycle fall over? It was two-tired`,
+            `Why can’t you hear a pterodactyl go to the bathroom? Because the “P” is silent`,
+            `What do you get when you cross a snowman and a dog? Frostbite`,
+            `What do you call a fish with no eyes? Fsh`,
+            `Why do cows have hooves instead of feet? Because they lactose`,
+            `Why did the frog take the bus to work today? His car got toad`,
+            `How do bees get to school? By the buzz`,
+            `What do you call a bear with no teeth? A gummy bear`,
+            `What do you call a pig that knows karate? A pork chop`,
+            `Why did the crab never share? Because it’s shellfish`,
+            `How do you organize a space party? You planet`,
+            `What do you call an alligator in a vest? An investigator`,
+            `Why don’t ants get sick? They have tiny ant-bodies`,
+            `Why did the tomato turn red? It saw the salad dressing`,
+            `What kind of room doesn’t have doors? A mushroom`,
+            `Why did the cookie go to the hospital? It felt crumby`,
+            `What do you call a funny peanut? A nutcracker`,
+            `Why couldn’t the sesame seed leave the casino? It was on a roll`,
+            `What did one plate say to the other? Lunch is on me`,
+            `How do you fix a broken pizza? With tomato paste`,
+            `Why did the banana go to the doctor? It wasn’t peeling well`,
+            `Why are oranges smart? Because they concentrate`,
+            `What’s a potato’s favorite form of exercise? Mashed-ups`,
+            `Why was the math book sad? It had too many problems`,
+            `What do you call an illegally parked frog? Toad`,
+            `Why don’t skeletons ever start a business? They don’t have the backbone`,
+            `Why did the student eat his homework? Because his teacher said it was a piece of cake`,
+            `What did the janitor say when he jumped out of the closet? Supplies`,
+            `Why did the computer go to the doctor? It had a virus`,
+            `Why was the broom late? It swept in`,
+            `Why did the music teacher go to jail? She got caught with sharp notes`,
+            `Why do calendars always seem depressed? Their days are numbered`,
+            `How do you throw a space party? You planet`,
+            `I told my wife she was drawing her eyebrows too high. She looked surprised`,
+            `I’m reading a book on anti-gravity. It’s impossible to put down`,
+            `I used to play piano by ear, but now I use my hands`,
+            `I’d tell you a joke about an elevator, but it’s an uplifting experience`,
+            `Parallel lines have so much in common. It’s a shame they’ll never meet`,
+            `I ordered a chicken and an egg online. I’ll let you know which comes first`,
+            `I told a chemistry joke, but there was no reaction`,
+            `Why don’t some couples go to the gym? Because some relationships don’t work out`,
+            `I used to be a baker, but I couldn’t make enough dough`,
+            `I’m friends with all electricians. We have good current connections`,
+            `How does a penguin build its house? Igloos it together`,
+            `Why did the golfer bring two pairs of pants? In case he got a hole in one`,
+            `What’s a ninja’s favorite type of shoes? Sneakers`,
+            `Why are skeletons bad at poker? They always show their bones`,
+            `What do you call an apology written in dots and dashes? Remorse code`,
+            `What kind of music do mummies listen to? Wrap music`,
+            `Why don’t seagulls fly over the bay? Because then they’d be bagels`,
+            `What did the ocean say to the beach? Nothing, it just waved`,
+            `What do you call a factory that sells passable products? A satisfactory`,
+            `What has ears but cannot hear? A cornfield`,
+            `What do you call a boomerang that doesn’t come back? A stick`,
+            `Why did the kid bring a ladder to school? He wanted to go to high school`,
+            `Why was the belt arrested? It held up a pair of pants`,
+            `How do you make a tissue dance? Put a little boogie in it`,
+            `Why don’t eggs tell jokes? They’d crack each other up`,
+            `What happens when you witness a shipwreck? You let it sink in`,
+            `What did the big flower say to the little flower? Hi, bud`,
+            `Why did the math teacher love geometry? Because it was shapely`,
+            `What do you call a belt made of watches? A waist of time`,
+            `Why are ghosts bad liars? You can see right through them`,
+            `What did the grape do when it got stepped on? It let out a little wine`,
+            `Why did the coffee file a police report? It got mugged`,
+            `Why was the picture sent to jail? It was framed`,
+            `Why can’t your nose be 12 inches long? Because then it’d be a foot`,
+            `Why don’t oysters share their pearls? They’re shellfish`,
+            `How do you organize a messy space party? You planet carefully`,
+            `What do you call two monkeys that share an Amazon account? Prime mates`,
+            `How does a dog stop a video? By hitting the paws button`,
+            `Why are frogs so happy? They eat whatever bugs them`,
+            `What do you call a pencil that broke in two? Pointless`,
+            `How do you make a skeleton laugh? Tickle its funny bone`,
+            `What do clouds wear under their clothes? Thunderwear`,
+            `What’s a pirate’s favorite letter? You’d think it’s “R,” but it’s the “C.`,
+            `Why do ducks have feathers? To cover their quacks`,
+            `Why did the stadium get so hot? All the fans left`,
+            `How do vampires start letters? Tomb it may concern`,
+            `Why don’t you write with a broken pencil? It’s pointless`,
+            `Why did the tomato blush? Because it saw the salad dressing`,
+            `How does a scientist freshen their breath? With experi-mints`,
+            `What do you call a dinosaur with an extensive vocabulary? A thesaurus`,
+            `Why don’t trees use computers? They’re afraid of logging out`,
+            `How does a barber win the race? He knows all the shortcuts`,
+            `Why did the golfer wear two pairs of pants? In case he got a hole in one`,
+            `What kind of shoes do spies wear? Sneakers`,
+            `How do you fix a cracked pumpkin? With a pumpkin patch`,
+            `What do you call a funny mountain? Hill-arious`,
+            `Why did the belt go to jail? It held up some pants`,
+            `Why don’t basketball players go on vacation? They’d get called for traveling`,
+            `Why did the mushroom go to the party? Because he was a fungi`,
+            `How does a train eat? It goes chew chew`
+        ];
+        function tellMeAJoke(event){
+            event.preventDefault();// Prevents form submission behavior
+            const random_idx =  Math.floor(Math.random() * arr.length);
+            const joke = arr[random_idx];
+            const joke_display = document.getElementById("jokeId");
+            jokeId.textContent = joke;// Updates the text content of the joke element
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <button name="ClickMe" onclick="tellMeAJoke(event)">Tell Me Joke</button>
+    </form>
+    <p id="jokeId" style="font-weight: bold; margin-top: 20px;"></p>
+</body>
+</html>
